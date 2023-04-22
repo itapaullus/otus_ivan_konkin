@@ -7,24 +7,43 @@
 //Использовать только циклы, массивы, условия и другие структуры, которые были пройдены на данный момент в рамках курса.
 //В этом задании не нужно использовать ООП (создавать классы), вопросы и варианты ответов надо хранить в массиве (массивах).
 
+import java.util.ArrayList;
+
 public class TestSystem {
 
     public static void main(String[] args) {
-        Question[] questions = {
-                new Question("What is the biggest planet of solar system?", new String[]{"Earth", "Venus", "Jypiter"}, 3),
-                new Question("Who was the last Formula1 season winner?", new String[]{"Verstappen", "Hamilton", "Bottas", "Leclerc", "Russell"}, 1),
-                new Question("Which sql command using for filtering the results of aggregate functions?", new String[]{"distinct", "where", "having", "grouping"}, 3)
-        };
+        ArrayList<Question> questions = new ArrayList<>();
+        ArrayList<Answer> q1Answers = new ArrayList<>();
+        q1Answers.add(new Answer("Mars"));
+        q1Answers.add(new Answer("Earth"));
+        q1Answers.add(new Answer("Venus"));
+        q1Answers.add(new Answer("Jupiter"));
+        questions.add(new Question("What is the biggest planet of solar system?", q1Answers, 4));
+
+        ArrayList<Answer> q2Answers = new ArrayList<>();
+        q2Answers.add(new Answer("Bottas"));
+        q2Answers.add(new Answer("Leclerc"));
+        q2Answers.add(new Answer("Verstappen"));
+        q2Answers.add(new Answer("Hamilton"));
+        questions.add(new Question("Who was the last Formula1 season winner?", q2Answers, 3));
+
+        ArrayList<Answer> q3Answers = new ArrayList<>();
+        q3Answers.add(new Answer("Distinct"));
+        q3Answers.add(new Answer("Where"));
+        q3Answers.add(new Answer("grouping"));
+        q3Answers.add(new Answer("With"));
+        q3Answers.add(new Answer("Having"));
+        questions.add(new Question("Which sql operator helps to filter results of aggregate function?", q3Answers, 5));
         int correctAnswers = 0;
         for (Question question : questions) {
             if (question.processQuestion()) {
                 System.out.println("Correct! +1 point to Gryffindor!");
                 correctAnswers += 1;
             } else {
-                System.out.println("You wrong( Correct answer is " + question.getAnswers()[question.getCorrectAnswer() - 1]);
+                System.out.println("You wrong( Correct answer is " + question.getCorrectAnswer().text());
             }
             System.out.println("------------------------------------");
         }
-        System.out.println("Summary: " + correctAnswers + " correct answers of " + questions.length + " questions");
+        System.out.println("Summary: " + correctAnswers + " correct answers of " + questions.size() + " questions");
     }
 }
