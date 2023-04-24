@@ -1,49 +1,32 @@
-//Написать систему тестирования.
-//На экран выводится вопрос и варианты ответа, с клавиатуры вводится номер ответа.
-//Вопросы и ответы должны быть зашиты в коде, внешнего хранения в файлах или базах данных не нужно.
-//Должно быть три вопроса, каждый с 3-5 вариантами ответов.
-//Все вопросы с одним правильным вариантом ответа.
-//После прохождения теста отображается результат.
-//Использовать только циклы, массивы, условия и другие структуры, которые были пройдены на данный момент в рамках курса.
-//В этом задании не нужно использовать ООП (создавать классы), вопросы и варианты ответов надо хранить в массиве (массивах).
-
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class TestSystem {
 
     public static void main(String[] args) {
-        ArrayList<Question> questions = new ArrayList<>();
-        ArrayList<Answer> q1Answers = new ArrayList<>();
-        q1Answers.add(new Answer("Mars"));
-        q1Answers.add(new Answer("Earth"));
-        q1Answers.add(new Answer("Venus"));
-        q1Answers.add(new Answer("Jupiter"));
-        questions.add(new Question("What is the biggest planet of solar system?", q1Answers, 4));
-
-        ArrayList<Answer> q2Answers = new ArrayList<>();
-        q2Answers.add(new Answer("Bottas"));
-        q2Answers.add(new Answer("Leclerc"));
-        q2Answers.add(new Answer("Verstappen"));
-        q2Answers.add(new Answer("Hamilton"));
-        questions.add(new Question("Who was the last Formula1 season winner?", q2Answers, 3));
-
-        ArrayList<Answer> q3Answers = new ArrayList<>();
-        q3Answers.add(new Answer("Distinct"));
-        q3Answers.add(new Answer("Where"));
-        q3Answers.add(new Answer("grouping"));
-        q3Answers.add(new Answer("With"));
-        q3Answers.add(new Answer("Having"));
-        questions.add(new Question("Which sql operator helps to filter results of aggregate function?", q3Answers, 5));
+        String[] questions = new String[]{
+                "What is the biggest planet of solar system?",
+                "Who was the last Formula1 season winner?",
+                "Which sql operator helps to filter results of aggregate function?"};
+        String[][] answers = new String[][]{new String[]{"Mars", "Jupiter", "Earth", "Venus", "Pluto"},
+                new String[]{"Bottas", "Leclerc", "Hamilton", "Verstappen"},
+                new String[]{"distinct", "where", "having", "grouping", "with"}};
+        int[] correct_answers = new int[]{2, 4, 3};
+        Scanner scanner = new Scanner(System.in);
         int correctAnswers = 0;
-        for (Question question : questions) {
-            if (question.processQuestion()) {
-                System.out.println("Correct! +1 point to Gryffindor!");
+        for (int i = 0; i < questions.length; i++) {
+            System.out.println(questions[i]);
+            for (int j = 0; j < answers[i].length; j++) {
+                System.out.println((j + 1) + ". " + answers[i][j]);
+            }
+            System.out.println("Choose your answer: ");
+            if (scanner.nextInt() == correct_answers[i]) {
+                System.out.println("Correct!");
                 correctAnswers += 1;
             } else {
-                System.out.println("You wrong( Correct answer is " + question.getCorrectAnswer().text());
+                System.out.println("Wrong. Correct answer is " + answers[i][correct_answers[i] - 1]);
             }
-            System.out.println("------------------------------------");
+            System.out.println("--------------------------------------------");
         }
-        System.out.println("Summary: " + correctAnswers + " correct answers of " + questions.size() + " questions");
+        System.out.println("Summary: " + correctAnswers + " correct answers of " + questions.length + " questions");
     }
 }
