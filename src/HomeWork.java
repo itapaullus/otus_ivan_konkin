@@ -1,8 +1,7 @@
-import lesson12.SortMethods;
-
+import lesson13.App;
 
 public class HomeWork {
     public static void main(String[] args) {
-        SortMethods.app();
+        App.main(null);
     }
 }
