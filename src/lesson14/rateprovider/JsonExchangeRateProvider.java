@@ -5,6 +5,7 @@ import lesson14.model.CurrencyPair;
 //import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -39,8 +40,9 @@ public class JsonExchangeRateProvider implements ExchangeRateProvider {
     }
 
     private void parseExchangeRates() {
-        try {
-            byte[] jsonData = Files.readAllBytes(Paths.get(filename));
+        try (InputStream inputStream = Files.newInputStream(Paths.get(filename))){
+            byte[] jsonData = inputStream.readAllBytes();
+
 //            так как парсить тут json немного лень, да и заивисимости без pom подключать неудобно,
 //            то просто зашьем в мапу гвоздями несколько ставок
             rates.put(new CurrencyPair("USD", "RUR"), 81.25);
