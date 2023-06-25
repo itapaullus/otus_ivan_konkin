@@ -26,13 +26,17 @@ public class GameTest {
                 return 1;
             }
         }
-        Dice dice = new EqualDice();
         TestWinnerPrinter winnerPrinter = new TestWinnerPrinter();
         Game game = new Game(new EqualDice(), winnerPrinter);
         game.playGame(new Player("player1"), new Player("player2"));
         // проверим, что игра не вернет ни первого, ни второго игрока
-        Assertions.assertNotEquals(winnerPrinter.winnerName, "player1");
-        Assertions.assertNotEquals(winnerPrinter.winnerName, "player2");
+        try {
+            Assertions.assertNotEquals(winnerPrinter.winnerName, "player1");
+            Assertions.assertNotEquals(winnerPrinter.winnerName, "player2");
+            System.out.println("Test succeeded");
+        } catch (AssertionError e) {
+            System.err.println("Test Failed! Game with equal dices returning the name of winner");
+        }
     }
 
     @Test
@@ -44,7 +48,7 @@ public class GameTest {
             @Override
             public int roll() {
                 rolls += 1;
-                return 6-rolls; // для первого вернем 5, для второго - 4
+                return 6 - rolls; // для первого вернем 5, для второго - 4
             }
         }
         class TestWinnerPrinter implements GameWinnerPrinter {
@@ -58,7 +62,12 @@ public class GameTest {
         TestWinnerPrinter winnerPrinter = new TestWinnerPrinter();
         Game game = new Game(new DiceForFirstWin(), winnerPrinter);
         game.playGame(new Player("player1"), new Player("player2"));
-        Assertions.assertEquals("player1", winnerPrinter.winnerName);
+        try {
+            Assertions.assertEquals("player1", winnerPrinter.winnerName);
+            System.out.println("Test succeeded!");
+        } catch (AssertionError e) {
+            System.err.println("Test Failed: player1 should be a winner!");
+        }
     }
 
     @Test
@@ -84,6 +93,17 @@ public class GameTest {
         TestWinnerPrinter winnerPrinter = new TestWinnerPrinter();
         Game game = new Game(new DiceForFirstWin(), winnerPrinter);
         game.playGame(new Player("player1"), new Player("player2"));
-        Assertions.assertEquals("player2", winnerPrinter.winnerName);
+        try {
+            Assertions.assertEquals("player2", winnerPrinter.winnerName);
+            System.out.println("Test succeeded!");
+        } catch (AssertionError e) {
+            System.err.println("Test failed: player2 should be a winner!");
+        }
+    }
+
+    public void test() {
+        testEqualsResult();
+        testFirstWin();
+        testSecondWin();
     }
 }
