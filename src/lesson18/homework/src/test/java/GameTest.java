@@ -1,6 +1,9 @@
 package lesson18.homework.src.test.java;
 
-import lesson18.homework.src.main.java.ru.otus.game.*;
+import lesson18.homework.src.main.java.ru.otus.game.Dice;
+import lesson18.homework.src.main.java.ru.otus.game.Game;
+import lesson18.homework.src.main.java.ru.otus.game.GameWinnerPrinter;
+import lesson18.homework.src.main.java.ru.otus.game.Player;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,6 +40,7 @@ public class GameTest {
     public void testFirstWin() {
         class DiceForFirstWin implements Dice {
             private int rolls = 0;
+
             @Override
             public int roll() {
                 rolls += 1;
@@ -55,5 +59,31 @@ public class GameTest {
         Game game = new Game(new DiceForFirstWin(), winnerPrinter);
         game.playGame(new Player("player1"), new Player("player2"));
         Assertions.assertEquals("player1", winnerPrinter.winnerName);
+    }
+
+    @Test
+    @DisplayName("Игра с победой второго игрока")
+    public void testSecondWin() {
+        class DiceForFirstWin implements Dice {
+            private int rolls = 0;
+
+            @Override
+            public int roll() {
+                rolls += 1;
+                return 1 + rolls; // для первого вернем 2, для второго - 3
+            }
+        }
+        class TestWinnerPrinter implements GameWinnerPrinter {
+            public String winnerName;
+
+            @Override
+            public void printWinner(Player winner) {
+                this.winnerName = winner.getName();
+            }
+        }
+        TestWinnerPrinter winnerPrinter = new TestWinnerPrinter();
+        Game game = new Game(new DiceForFirstWin(), winnerPrinter);
+        game.playGame(new Player("player1"), new Player("player2"));
+        Assertions.assertEquals("player2", winnerPrinter.winnerName);
     }
 }
