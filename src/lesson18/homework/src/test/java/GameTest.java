@@ -31,4 +31,29 @@ public class GameTest {
         Assertions.assertNotEquals(winnerPrinter.winnerName, "player1");
         Assertions.assertNotEquals(winnerPrinter.winnerName, "player2");
     }
+
+    @Test
+    @DisplayName("Игра с победой первого игрока")
+    public void testFirstWin() {
+        class DiceForFirstWin implements Dice {
+            private int rolls = 0;
+            @Override
+            public int roll() {
+                rolls += 1;
+                return 6-rolls; // для первого вернем 5, для второго - 4
+            }
+        }
+        class TestWinnerPrinter implements GameWinnerPrinter {
+            public String winnerName;
+
+            @Override
+            public void printWinner(Player winner) {
+                this.winnerName = winner.getName();
+            }
+        }
+        TestWinnerPrinter winnerPrinter = new TestWinnerPrinter();
+        Game game = new Game(new DiceForFirstWin(), winnerPrinter);
+        game.playGame(new Player("player1"), new Player("player2"));
+        Assertions.assertEquals("player1", winnerPrinter.winnerName);
+    }
 }
