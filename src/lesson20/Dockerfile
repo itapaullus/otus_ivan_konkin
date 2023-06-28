@@ -1,0 +1,5 @@
+FROM postgres:latest
+
+ENV POSTGRES_USER=pau
+ENV POSTGRES_PASSWORD=pau
+ENV POSTGRES_DB=pgless20
