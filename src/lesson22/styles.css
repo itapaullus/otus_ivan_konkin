@@ -1,0 +1,8 @@
+table {
+    width: 90%;
+    border-collapse: collapse;
+}
+
+.custom-modal .modal-content {
+    height: 100vh;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Table</title>
+    <!-- MaterializeCSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>
+
+<div class="container">
+    <h4>Таблица студентов</h4>
+    <a class="waves-effect waves-light btn modal-trigger" href="#add-student-modal"><i class="material-icons left"></i>Добавить студента</a>
+
+    <table class="striped" id="students">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Дата рождения</th>
+            <th>Пол</th>
+            <th>Возраст</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <!-- Средний возраст -->
+    <table class="striped">
+        <thead>
+        <tr>
+            <th>Средний возраст студентов</th>
+            <th id="average-age"></th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="add-student-modal" class="modal custom-modal">
+    <div class="modal-content">
+        <h4>Добавить студента</h4>
+        <form onsubmit="event.preventDefault(); addStudent();">
+            <div class="input-field">
+                Имя: <input type="text" id="name" required>
+            </div>
+            <div class="input-field">
+                Дата рождения: <input type="date" id="dob" required>
+            </div>
+            <div class="input-field">
+                Пол:
+                <select id="gender" required>
+                    <option value="" disabled selected>Выберите</option>
+                    <option value="мужчина">Мужчина</option>
+                    <option value="женщина">Женщина</option>
+                </select>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit">Добавить
+                <i class="material-icons right"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
