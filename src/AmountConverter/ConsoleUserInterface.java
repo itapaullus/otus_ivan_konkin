@@ -9,7 +9,7 @@ public class ConsoleUserInterface implements UserInterface{
     @Override
     public int getAmount() {
         System.out.println("Введите число, пока тут 123");
-        return 0;
+        return 61519;
     }
 
     @Override
