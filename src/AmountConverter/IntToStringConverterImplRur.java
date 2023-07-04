@@ -31,14 +31,14 @@ public class IntToStringConverterImplRur implements IntToStringConverter {
             }
         }
         // добавим слово "тысяч"
-        if (isThousand && units > 0) {  //TODO 666000 работает неверно
+        if (isThousand) {
             if (units == 1) {
                 res.append(THOUSANDS[1]).append(" ");
-            } else if (units < 5) {
+            } else if (units > 0 && units < 5) {
                 res.append(THOUSANDS[2]).append(" ");
+            } else {
+                res.append(THOUSANDS[3]).append(" ");
             }
-        } else if (isThousand) {
-            res.append(THOUSANDS[3]).append(" ");
         }
         return res.toString().trim();
     }
@@ -54,7 +54,7 @@ public class IntToStringConverterImplRur implements IntToStringConverter {
         if (thousands > 0 && remainder == 0) {
             str = convertToWords(thousands, true);
         } else {
-            str = convertToWords(thousands, true) + " " + convertToWords(remainder, false);
+            str = (convertToWords(thousands, true) + " " + convertToWords(remainder, false)).trim();
         }
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
