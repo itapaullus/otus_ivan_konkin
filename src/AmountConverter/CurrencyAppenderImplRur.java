@@ -1,9 +1,9 @@
 package AmountConverter;
 
-public class CurrencyAppenderImplRur implements CurrencyAppender{
+public class CurrencyAppenderImplRur implements CurrencyAppender {
     @Override
-    public String appendCurrency(int amount, Currency currency) {
-        if (amount > 4 && amount < 21) {
+    public String appendCurrency(int amount) {
+        if (amount % 100 > 4 && amount % 100 < 21) {
             return "рублей";
         } else if (amount % 10 == 1) {
             return "рубль";

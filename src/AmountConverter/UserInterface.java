@@ -6,15 +6,11 @@ public interface UserInterface {
 
     void showMenu();
 
-    int getAmount();
-
-    Currency getCurrency();
-
     void returnResult(String text);
 
-    Action getAction() throws NoActionException;
+    Action getActionWithRetry();
 
-    void showMessage(String text);
+    Currency getCurrencyWithRetry();
 
-    void showError(String text);
+    int getAmountWithRetry();
 }

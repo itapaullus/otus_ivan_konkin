@@ -7,7 +7,7 @@ public class IntToStringConverterImplRur implements IntToStringConverter {
     private static final String[] HUNDREDS = {"", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"};
     private static final String[] THOUSANDS = {"", "тысяча", "тысячи", "тысяч"};
 
-    private static String convertToWords(int num, boolean isThousand) {
+    private static String convertToWords(int num, boolean isThousand) {//TODO некорректно работают трехзначные числа, возвращается лидирующий пробел
         if (num == 0) {
             return "";
         }
@@ -31,7 +31,7 @@ public class IntToStringConverterImplRur implements IntToStringConverter {
             }
         }
         // добавим слово "тысяч"
-        if (isThousand && units > 0) {
+        if (isThousand && units > 0) {  //TODO 666000 работает неверно
             if (units == 1) {
                 res.append(THOUSANDS[1]).append(" ");
             } else if (units < 5) {

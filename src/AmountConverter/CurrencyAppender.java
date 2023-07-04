@@ -1,5 +1,5 @@
 package AmountConverter;
 
 public interface CurrencyAppender {
-    String appendCurrency(int Amount, Currency currency);
+    String appendCurrency(int Amount);
 }
