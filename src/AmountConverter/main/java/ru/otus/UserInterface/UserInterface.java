@@ -1,4 +1,7 @@
-package AmountConverter;
+package AmountConverter.main.java.ru.otus.UserInterface;
+
+import AmountConverter.main.java.ru.otus.Enum.Action;
+import AmountConverter.main.java.ru.otus.Enum.Currency;
 
 public interface UserInterface {
 

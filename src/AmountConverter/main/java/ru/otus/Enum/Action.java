@@ -1,4 +1,4 @@
-package AmountConverter;
+package AmountConverter.main.java.ru.otus.Enum;
 
 import java.util.HashMap;
 import java.util.Map;

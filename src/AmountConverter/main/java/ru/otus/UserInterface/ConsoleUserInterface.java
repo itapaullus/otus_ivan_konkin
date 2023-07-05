@@ -1,9 +1,22 @@
-package AmountConverter;
+package AmountConverter.main.java.ru.otus.UserInterface;
+
+import AmountConverter.main.java.ru.otus.Enum.Action;
+import AmountConverter.main.java.ru.otus.Enum.Currency;
+import AmountConverter.main.java.ru.otus.Exception.BadAmountException;
+import AmountConverter.main.java.ru.otus.Exception.BadCurrencyException;
+import AmountConverter.main.java.ru.otus.Exception.NoActionException;
 
 import java.util.Scanner;
 
 public class ConsoleUserInterface implements UserInterface {
-    private final Scanner console = new Scanner(System.in);
+
+    private final UserInput userInput;
+    private final UserOutput userOutput;
+
+    public ConsoleUserInterface(UserInput userInput, UserOutput userOutput) {
+        this.userInput = userInput;
+        this.userOutput = userOutput;
+    }
 
     @Override
     public void firstScreen() {
@@ -27,9 +40,8 @@ public class ConsoleUserInterface implements UserInterface {
         showMessage("Enter the amount:");
         int amount;
         try {
-            amount = console.nextInt();
+            amount = userInput.getInteger();
         } catch (Exception e) {
-            console.nextLine();
             throw new BadAmountException("Incorrect amount!");
         }
         if (0 <= amount && amount < 1000000) {
@@ -42,7 +54,7 @@ public class ConsoleUserInterface implements UserInterface {
     private Currency getCurrency() throws BadCurrencyException {
         showMessage("Enter the currency");
         try {
-            return Currency.valueOf(console.next());
+            return Currency.valueOf(userInput.getString());
         } catch (IllegalArgumentException e) {
             throw new BadCurrencyException("This currency doesn't supported at the moment");
         }
@@ -55,18 +67,18 @@ public class ConsoleUserInterface implements UserInterface {
 
     private Action getAction() throws NoActionException {
         try {
-            return Action.fromString(console.next().toUpperCase());
+            return Action.fromString(userInput.getString().toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new NoActionException("Option not found");
         }
     }
 
     private void showMessage(String text) {
-        System.out.println(text);
+        userOutput.showMessage(text);
     }
 
     private void showError(String text) {
-        System.err.println(text);
+        userOutput.showError(text);
     }
 
     @Override

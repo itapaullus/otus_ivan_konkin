@@ -1,4 +1,4 @@
-package AmountConverter;
+package AmountConverter.main.java.ru.otus.CurrencyAppender;
 
 public class CurrencyAppenderImplRur implements CurrencyAppender {
     @Override

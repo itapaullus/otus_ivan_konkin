@@ -1,4 +1,4 @@
-package AmountConverter;
+package AmountConverter.main.java.ru.otus.IntToStringConverter;
 
 public class IntToStringConverterImplRur implements IntToStringConverter {
     private static final String[] UNITS = {"", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"};
@@ -7,7 +7,7 @@ public class IntToStringConverterImplRur implements IntToStringConverter {
     private static final String[] HUNDREDS = {"", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"};
     private static final String[] THOUSANDS = {"", "тысяча", "тысячи", "тысяч"};
 
-    private static String convertToWords(int num, boolean isThousand) {//TODO некорректно работают трехзначные числа, возвращается лидирующий пробел
+    private static String convertToWords(int num, boolean isThousand) {
         if (num == 0) {
             return "";
         }
@@ -32,12 +32,14 @@ public class IntToStringConverterImplRur implements IntToStringConverter {
         }
         // добавим слово "тысяч"
         if (isThousand) {
-            if (units == 1) {
-                res.append(THOUSANDS[1]).append(" ");
+            if (tens == 1) {
+                res.append(THOUSANDS[3]).append(" ");   //тысяч
+            } else if (units == 1) {
+                res.append(THOUSANDS[1]).append(" ");   //тысяча
             } else if (units > 0 && units < 5) {
-                res.append(THOUSANDS[2]).append(" ");
+                res.append(THOUSANDS[2]).append(" ");   //тысячи
             } else {
-                res.append(THOUSANDS[3]).append(" ");
+                res.append(THOUSANDS[3]).append(" ");   //тысяч
             }
         }
         return res.toString().trim();
