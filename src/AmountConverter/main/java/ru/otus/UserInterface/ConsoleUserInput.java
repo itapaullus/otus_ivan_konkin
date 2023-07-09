@@ -2,10 +2,15 @@ package AmountConverter.main.java.ru.otus.UserInterface;
 
 import AmountConverter.main.java.ru.otus.Exception.BadAmountException;
 
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class ConsoleUserInput implements UserInput {
-    private final Scanner console = new Scanner(System.in);
+    private final Scanner console;
+
+    public ConsoleUserInput(InputStream in) {
+        this.console = new Scanner(in);
+    }
 
     @Override
     public String getString() {
