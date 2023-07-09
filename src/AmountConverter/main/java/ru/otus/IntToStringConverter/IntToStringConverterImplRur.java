@@ -49,7 +49,7 @@ public class IntToStringConverterImplRur implements IntToStringConverter {
     public String convert(Integer amount) {
         String str;
         if (amount == 0) {
-            return "ноль";
+            return "Ноль";
         }
         int thousands = amount / 1000;
         int remainder = amount % 1000;

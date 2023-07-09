@@ -5,7 +5,6 @@ import AmountConverter.main.java.ru.otus.CurrencyAppender.CurrencyAppenderFactor
 import AmountConverter.main.java.ru.otus.Enum.Action;
 import AmountConverter.main.java.ru.otus.Enum.Currency;
 import AmountConverter.main.java.ru.otus.IntToStringConverter.IntToStringConverter;
-import AmountConverter.main.java.ru.otus.UserInterface.UserInput;
 import AmountConverter.main.java.ru.otus.UserInterface.UserInterface;
 
 public class AmountConverter {

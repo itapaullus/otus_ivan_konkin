@@ -1,6 +1,6 @@
 package AmountConverter.main.java.ru.otus.UserInterface;
 
-public class ConsoleUserOutput implements UserOutput{
+public class ConsoleUserOutput implements UserOutput {
 
     @Override
     public void showMessage(String string) {

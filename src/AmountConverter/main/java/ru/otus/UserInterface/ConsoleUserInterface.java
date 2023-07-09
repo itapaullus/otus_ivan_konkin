@@ -6,8 +6,6 @@ import AmountConverter.main.java.ru.otus.Exception.BadAmountException;
 import AmountConverter.main.java.ru.otus.Exception.BadCurrencyException;
 import AmountConverter.main.java.ru.otus.Exception.NoActionException;
 
-import java.util.Scanner;
-
 public class ConsoleUserInterface implements UserInterface {
 
     private final UserInput userInput;
