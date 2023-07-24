@@ -1,6 +1,6 @@
 package AmountConverter;
 
-public class CurrencyAppenderImplRur implements CurrencyAppender{
+public class CurrencyAppenderImplRur implements CurrencyAppender {
     @Override
     public String appendCurrency(int amount, Currency currency) {
         if (amount > 4 && amount < 21) {

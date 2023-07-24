@@ -1,8 +1,6 @@
 package lesson14.rateprovider;
 
 import lesson14.model.CurrencyPair;
-//import org.json.JSONArray;
-//import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,9 +25,8 @@ public class JsonExchangeRateProvider implements ExchangeRateProvider {
         }
         result = rates.get(pair);
         if (result == null) {
-            throw new NoRateException("Currency pair "+pair.curFrom()+"/"+pair.curTo()+" doesn't exists");
-        }
-        else {
+            throw new NoRateException("Currency pair " + pair.curFrom() + "/" + pair.curTo() + " doesn't exists");
+        } else {
             return result;
         }
     }
@@ -40,7 +37,7 @@ public class JsonExchangeRateProvider implements ExchangeRateProvider {
     }
 
     private void parseExchangeRates() {
-        try (InputStream inputStream = Files.newInputStream(Paths.get(filename))){
+        try (InputStream inputStream = Files.newInputStream(Paths.get(filename))) {
             byte[] jsonData = inputStream.readAllBytes();
 
 //            так как парсить тут json немного лень, да и заивисимости без pom подключать неудобно,

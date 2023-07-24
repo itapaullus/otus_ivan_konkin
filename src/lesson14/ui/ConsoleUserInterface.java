@@ -20,9 +20,8 @@ public class ConsoleUserInterface implements UserInterface {
         try {
             result = Action.valueOf(cmd.toUpperCase());
             return result;
-        }
-        catch (IllegalArgumentException e) {
-            throw new InvalidAction("Action "+cmd+" doesn't exists");
+        } catch (IllegalArgumentException e) {
+            throw new InvalidAction("Action " + cmd + " doesn't exists");
         }
     }
 
@@ -37,8 +36,7 @@ public class ConsoleUserInterface implements UserInterface {
         System.out.println(message);
         try {
             return scanner.nextDouble();
-        }
-        catch (InputMismatchException e) {
+        } catch (InputMismatchException e) {
             throw new IllegalArgumentException("Bad amount");
         }
     }

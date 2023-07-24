@@ -1,7 +1,7 @@
 package AmountConverter;
 
-public class NoActionException extends Exception{
-    NoActionException(String message){
+public class NoActionException extends Exception {
+    NoActionException(String message) {
         super(message);
     }
 }

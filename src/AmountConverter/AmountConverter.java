@@ -1,7 +1,4 @@
-
 package AmountConverter;
-
-import java.util.InputMismatchException;
 
 public class AmountConverter {
     private final UserInterface userInterface;
@@ -36,8 +33,7 @@ public class AmountConverter {
                 } else if (action.equals(Action.QUIT)) {
                     return;
                 }
-            }
-            catch (IllegalArgumentException | NoActionException e ) {
+            } catch (IllegalArgumentException | NoActionException e) {
                 userInterface.showError(e.getMessage());
             }
         }
