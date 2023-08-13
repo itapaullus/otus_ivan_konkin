@@ -1,4 +1,4 @@
-package AmountConverter;
+package AmountConverter.main.java.ru.otus.IntToStringConverter;
 
 public class IntToStringConverterImplRur implements IntToStringConverter {
     private static final String[] UNITS = {"", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"};
@@ -31,14 +31,16 @@ public class IntToStringConverterImplRur implements IntToStringConverter {
             }
         }
         // добавим слово "тысяч"
-        if (isThousand && units > 0) {
-            if (units == 1) {
-                res.append(THOUSANDS[1]).append(" ");
-            } else if (units < 5) {
-                res.append(THOUSANDS[2]).append(" ");
+        if (isThousand) {
+            if (tens == 1) {
+                res.append(THOUSANDS[3]).append(" ");   //тысяч
+            } else if (units == 1) {
+                res.append(THOUSANDS[1]).append(" ");   //тысяча
+            } else if (units > 0 && units < 5) {
+                res.append(THOUSANDS[2]).append(" ");   //тысячи
+            } else {
+                res.append(THOUSANDS[3]).append(" ");   //тысяч
             }
-        } else if (isThousand) {
-            res.append(THOUSANDS[3]).append(" ");
         }
         return res.toString().trim();
     }
@@ -47,14 +49,14 @@ public class IntToStringConverterImplRur implements IntToStringConverter {
     public String convert(Integer amount) {
         String str;
         if (amount == 0) {
-            return "ноль";
+            return "Ноль";
         }
         int thousands = amount / 1000;
         int remainder = amount % 1000;
         if (thousands > 0 && remainder == 0) {
             str = convertToWords(thousands, true);
         } else {
-            str = convertToWords(thousands, true) + " " + convertToWords(remainder, false);
+            str = (convertToWords(thousands, true) + " " + convertToWords(remainder, false)).trim();
         }
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }

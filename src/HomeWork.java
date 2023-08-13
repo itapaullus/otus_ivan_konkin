@@ -1,26 +1,18 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import AmountConverter.AmountConverter;
+import AmountConverter.main.java.ru.otus.CurrencyAppender.CurrencyAppenderFactory;
+import AmountConverter.main.java.ru.otus.IntToStringConverter.IntToStringConverter;
+import AmountConverter.main.java.ru.otus.IntToStringConverter.IntToStringConverterImplRur;
+import AmountConverter.main.java.ru.otus.UserInterface.ConsoleUserInput;
+import AmountConverter.main.java.ru.otus.UserInterface.ConsoleUserInterface;
+import AmountConverter.main.java.ru.otus.UserInterface.ConsoleUserOutput;
+import AmountConverter.main.java.ru.otus.UserInterface.UserInterface;
 
 public class HomeWork {
     public static void main(String[] args) {
-//        IntToStringConverter intToStringConverter = new IntToStringConverterImplRur();
-//        UserInterface userInterface = new ConsoleUserInterface();
-//        CurrencyAppender currencyAppender = new CurrencyAppenderImplRur();
-//        AmountConverter amountConverter = new AmountConverter(userInterface, intToStringConverter, currencyAppender);
-//        amountConverter.run();
-        List<String> jobForPiglet = Arrays.asList("5factory", "Цифрум");
-        HashMap<String, Integer> res = new HashMap<>();
-        res.put("5factory",0);
-        res.put("Цифрум",0);
-        System.out.println(jobForPiglet);
-        for (int i = 0; i < 13*13*13*11; i++) {
-            Random rand = new Random();
-            String yourJob = jobForPiglet.get(rand.nextInt(jobForPiglet.size()));
-            res.put(yourJob, res.get(yourJob)+1);
-        }
-        System.out.println("5factory result is "+res.get("5factory"));
-        System.out.println("Цифрум result is "+res.get("Цифрум"));
+        IntToStringConverter intToStringConverter = new IntToStringConverterImplRur();
+        UserInterface userInterface = new ConsoleUserInterface(new ConsoleUserInput(System.in), new ConsoleUserOutput());
+        CurrencyAppenderFactory currencyAppenderFactory = new CurrencyAppenderFactory();
+        AmountConverter amountConverter = new AmountConverter(userInterface, intToStringConverter, currencyAppenderFactory);
+        amountConverter.run();
     }
 }
