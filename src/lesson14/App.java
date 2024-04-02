@@ -9,7 +9,7 @@ public class App {
         ConverterApp converterApp = new ConverterApp(new SimpleCurrencyConverter(),
                 new JsonExchangeRateProvider("src/lesson14/resources/rates/rates.json"),
                 new ConsoleUserInterface()
-                );
+        );
         converterApp.app();
     }
 }

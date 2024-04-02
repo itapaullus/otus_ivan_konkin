@@ -33,7 +33,7 @@ public class ConverterApp {
                     double result = converter.convert(ui.getAmount("enter Amount"), provider.getRate(curFrom, curTo));
                     ui.showMessage("Your converted amount is " + curTo + " " + result);
                 }
-            } catch (NoRateException | InvalidAction | RuntimeException  e) {
+            } catch (NoRateException | InvalidAction | RuntimeException e) {
                 ui.showMessage(e.getMessage());
             }
         }

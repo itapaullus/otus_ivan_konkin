@@ -15,7 +15,7 @@ public class Question {
     }
 
     public Answer getCorrectAnswer() {
-        return this.answers.get(correctAnswer-1);
+        return this.answers.get(correctAnswer - 1);
     }
 
     public void printFullQuestion() {

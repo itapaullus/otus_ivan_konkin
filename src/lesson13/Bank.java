@@ -3,7 +3,10 @@ package lesson13;
 import lesson13.model.Account;
 import lesson13.model.Client;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class Bank {
     public final Map<Client, Set<Account>> clientAccounts;
@@ -30,6 +33,7 @@ public class Bank {
     public Client findClientFaster(Account account) {   //search by Map
         return accToClientMap.getOrDefault(account, null);
     }
+
     public void addAccount(Account account, Client client) {
         Set<Account> accounts = clientAccounts.getOrDefault(client, new HashSet<>());
         accounts.add(account);

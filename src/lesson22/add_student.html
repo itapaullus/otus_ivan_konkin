@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <title>Student Table</title>
     <!-- MaterializeCSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="styles.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
 <div class="container">
     <h4>Таблица студентов</h4>
-    <a class="waves-effect waves-light btn modal-trigger" href="#add-student-modal"><i class="material-icons left"></i>Добавить студента</a>
+    <a class="waves-effect waves-light btn modal-trigger" href="#add-student-modal"><i class="material-icons left"></i>Добавить
+        студента</a>
 
     <table class="striped" id="students">
         <thead>
@@ -39,20 +40,20 @@
     </table>
 </div>
 
-<div id="add-student-modal" class="modal custom-modal">
+<div class="modal custom-modal" id="add-student-modal">
     <div class="modal-content">
         <h4>Добавить студента</h4>
         <form onsubmit="event.preventDefault(); addStudent();">
             <div class="input-field">
-                Имя: <input type="text" id="name" required>
+                Имя: <input id="name" required type="text">
             </div>
             <div class="input-field">
-                Дата рождения: <input type="date" id="dob" required>
+                Дата рождения: <input id="dob" required type="date">
             </div>
             <div class="input-field">
                 Пол:
                 <select id="gender" required>
-                    <option value="" disabled selected>Выберите</option>
+                    <option disabled selected value="">Выберите</option>
                     <option value="мужчина">Мужчина</option>
                     <option value="женщина">Женщина</option>
                 </select>
